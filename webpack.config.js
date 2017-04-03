@@ -1,12 +1,12 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: './src/print-dom.js',
+	entry: './src/print-job.js',
 	devtool: 'source-map',
 	output: {
 		path: './lib',
-		filename: 'print-dom.min.js',
-		library: 'PrintDom',
+		filename: 'print-job.min.js',
+		library: 'PrintJob',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},

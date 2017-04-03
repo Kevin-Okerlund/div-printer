@@ -1,5 +1,5 @@
 {
-  "name": "print-dom",
+  "name": "print-job",
   "version": "1.0.0",
   "description": "Print a single HTML container",
   "main": "index.js",
