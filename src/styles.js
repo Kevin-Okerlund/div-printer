@@ -33,6 +33,7 @@ export const CLASSES = {
  * @returns {string}
  */
 export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
+	console.log(printElementWidth, smashedWidth);
 	const zIndex = highestZIndex();
 
 	let maxWidth = 'max-width: 100%;';
@@ -42,11 +43,6 @@ export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
 	}
 
 	return `
-	
-	#${IDS.IMAGE} {
-		display: none;
-	}
-
 	@media print {
 
 		.${CLASSES.PRINT} {
@@ -78,10 +74,32 @@ export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
 			display: none !important;
 		}
 
+	}
+	`;
+}
+
+
+/**
+ * Create the CSS needed to print images
+ *
+ * @returns {string}
+ */
+export function createImageCSS() {
+	return `
+	#${IDS.IMAGE} {
+		display: none;
+		max-width: 100%;
+	}
+	
+	@media print {
+	
 		#${IDS.IMAGE} {
 			display: block;
 		}
-
+		
+		body > *:not(#${IDS.IMAGE}) {
+			display: none !important;
+		}
 	}
 	`;
 }

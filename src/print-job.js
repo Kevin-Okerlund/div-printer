@@ -1,5 +1,5 @@
 import {getElement} from './utils';
-import {IDS, CLASSES, createCSS} from './styles';
+import {IDS, CLASSES, createCSS, createImageCSS} from './styles';
 
 
 /**
@@ -93,6 +93,27 @@ function afterPrint(elementToPrint) {
 
 
 /**
+ * Adds the image to the body, and appends the image CSS to <head>
+ *
+ * @param img
+ */
+function beforeImagePrint(img) {
+	document.body.appendChild(img);
+	addCSSToHead(createImageCSS());
+}
+
+
+/**
+ * Reverses the effects of the beforeImagePrint actions
+ * @param img
+ */
+function afterImagePrint(img) {
+	document.body.removeChild(img);
+	removeCSSFromhead();
+}
+
+
+/**
  * Expose static methods
  */
 export default {
@@ -110,16 +131,13 @@ export default {
 
 	image(url) {
 		const img = document.createElement('img');
-		// Have to set inline styles here, because styles are not added to head until actual print time
-		img.style.maxWidth = '100%';
-		img.id = IDS.IMAGE;
-
 		img['onload'] = () => {
-			this.print(img);
-			document.body.removeChild(img);
+			beforeImagePrint(img);
+			window.print();
+			afterImagePrint(img);
 		};
 
-		document.body.appendChild(img);
+		img.id = IDS.IMAGE;
 		img.src = url;
 	}
 }
