@@ -111,7 +111,7 @@ export default {
 	image(url) {
 		const img = document.createElement('img');
 		// Have to set inline styles here, because styles are not added to head until actual print time
-		img.style.width = '100%';
+		img.style.maxWidth = '100%';
 		img.id = IDS.IMAGE;
 
 		img['onload'] = () => {

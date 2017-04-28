@@ -35,7 +35,7 @@ export const CLASSES = {
 export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
 	const zIndex = highestZIndex();
 
-	let maxWidth = '';
+	let maxWidth = 'max-width: 100%;';
 
 	if (printElementWidth === smashedWidth) {
 		maxWidth = `max-width: ${printElementWidth}px;`;
