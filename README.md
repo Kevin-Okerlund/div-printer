@@ -26,8 +26,8 @@ PrintJob.print(element);
 ---
 
 ### Print an external image
-Because smaller images are used where possible, you can print just the full-size versions of the image by supplying an
-external URL
+Print just an image by supplying an external URL to the `.image()` method. This is handy for printing a large version of
+an image found on the page.  
  ```javascript
 PrintJob.image('url/to/image.jpg');
 ```
