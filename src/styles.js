@@ -8,7 +8,8 @@ import {highestZIndex} from './utils';
  */
 export const IDS = {
 	BLANKET: '__PRINT_JOB_BLANKET__',
-	PRINT_STYLE: '__PRINT_JOB_MEDIA_CSS__'
+	PRINT_STYLE: '__PRINT_JOB_MEDIA_CSS__',
+	IMAGE: '__PRINT_JOB_IMAGE__'
 };
 
 
@@ -41,6 +42,11 @@ export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
 	}
 
 	return `
+	
+	#${IDS.IMAGE} {
+		display: none;
+	}
+
 	@media print {
 
 		.${CLASSES.PRINT} {
@@ -70,6 +76,10 @@ export function createCSS(printElementWidth, smashedWidth, printElementHeight) {
 
 		body > :not(.${CLASSES.PARENT}):not(#${IDS.BLANKET}):not(.${CLASSES.PRINT}) {
 			display: none !important;
+		}
+
+		#${IDS.IMAGE} {
+			display: block;
 		}
 
 	}
