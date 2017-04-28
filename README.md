@@ -29,7 +29,7 @@ PrintJob.print(element);
 Because smaller images are used where possible, you can print just the full-size versions of the image by supplying an
 external URL
  ```javascript
-PrintJob.image('url/to/image/jpg');
+PrintJob.image('url/to/image.jpg');
 ```
 
 _**Note:** Because the image has to be fetched, your application code will continue to run after calling this method.
